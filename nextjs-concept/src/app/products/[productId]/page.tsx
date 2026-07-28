@@ -8,8 +8,13 @@ export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
   const Id = (await params).productId;
+  const title = await new Promise((reslove) => {
+    setTimeout(() => {
+      reslove(`iphone ${Id}`);
+    }, 100);
+  });
   return {
-    title: `Product ${Id}`,
+    title: `Product ${title}`,
   };
 };
 
