@@ -22,31 +22,34 @@ export default function AuthLayout({
   return (
     <html lang="en">
       <body>
-        <div>
-          <input
-            value={input}
-            onChange={(e) => {
-              setInput(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          {navLinks?.map((links) => {
-            const isActive =
-              pathname === links?.href ||
-              (pathname.startsWith(links.href) && links.href !== "/");
-            return (
-              <Link
-                href={links?.href}
-                key={links?.name}
-                style={{ color: isActive ? "blue" : "green" }}
-              >
-                {links?.name}
-              </Link>
-            );
-          })}
-          {children}
-        </div>
+        <>
+          {" "}
+          <div>
+            <input
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+              }}
+            />
+          </div>
+          <div>
+            {navLinks?.map((links) => {
+              const isActive =
+                pathname === links?.href ||
+                (pathname.startsWith(links.href) && links.href !== "/");
+              return (
+                <Link
+                  href={links?.href}
+                  key={links?.name}
+                  style={{ color: isActive ? "blue" : "green" }}
+                >
+                  {links?.name}
+                </Link>
+              );
+            })}
+            {children}
+          </div>
+        </>
       </body>
     </html>
   );
