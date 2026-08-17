@@ -1,5 +1,16 @@
 "use client";
 
-export default function ErrorBoundary({ error }: { error: Error }) {
-  return <h1>Error in Review Id -{error.message}</h1>;
+export default function ErrorBoundary({
+  error,
+  reset,
+}: {
+  error: Error;
+  reset: () => void;
+}) {
+  return (
+    <>
+      <h1>Error in Review Id -{error.message}</h1>
+      <button onClick={() => reset()}>Try again</button>
+    </>
+  );
 }
