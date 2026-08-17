@@ -1,5 +1,8 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { startTransition } from "react";
+
 export default function ErrorBoundary({
   error,
   reset,
@@ -7,10 +10,17 @@ export default function ErrorBoundary({
   error: Error;
   reset: () => void;
 }) {
+  const router = useRouter();
+  const reload = () => {
+    startTransition(() => {
+      router.refresh();
+      reset();
+    });
+  };
   return (
     <>
       <h1>Error in Review Id -{error.message}</h1>
-      <button onClick={() => reset()}>Try again</button>
+      <button onClick={reload}>Try again</button>
     </>
   );
 }
