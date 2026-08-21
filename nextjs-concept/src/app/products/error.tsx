@@ -19,7 +19,7 @@ export default function ErrorBoundary({
   };
   return (
     <>
-      <h1>Error in Review Id -{error.message}</h1>
+      <h1>{error.message}</h1>
       <button onClick={reload}>Try again</button>
     </>
   );
